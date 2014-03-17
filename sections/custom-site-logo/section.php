@@ -11,7 +11,7 @@
 
 class cslLogo extends PageLinesSection {
 
-    // WELCOME MESSAGE
+    // Welcome Message
     function welcome(){
 
         ob_start();
@@ -24,7 +24,7 @@ class cslLogo extends PageLinesSection {
     function section_opts(){
         $opts = array(
              array(
-                'col'      => '2', // special type that makes the option wider
+                'col'      => '2',
                 'key'       => $this->id.'cslLogo_welcome',
                 'type'      => 'template',
                 'title'     => __('How To Use','pagelines'),
@@ -46,7 +46,8 @@ class cslLogo extends PageLinesSection {
                 'col'      => '1',
                 'type'      => 'text',
                 'key'       => $this->id.'cslLogo_logo_wrapper_class', 
-                'label'     => __( 'Class for Logo.', 'pagelines' ),                    
+                'label'     => __( 'Class for Logo', 'pagelines' ),
+                'help'      => __( 'Use this to help you position the logo.  Its a great use for default WordPress Classes: Aligncenter, Alignleft, or Alignright.', 'pagelines' ),                    
                 ),
             array(
                 'col'      => '1',
@@ -64,11 +65,14 @@ class cslLogo extends PageLinesSection {
 
     function section_template() {
 
+        
+        // Check if the PageLines Editor is active.
         global $pldraft;
         $edit = false;
         if( is_object( $pldraft ) && 'draft' == $pldraft->mode )
-            $edit = true;
+        $edit = true;
 
+        // Put our options into varibles
         $logo       = $this->opt($this->id.'cslLogo_logo') ? $this->opt($this->id.'cslLogo_logo') : 'http://placehold.it/200x150';
         $alt        = $this->opt($this->id.'cslLogo_alt');
         $logoClass  = $this->opt($this->id.'cslLogo_logo_wrapper_class');
@@ -76,12 +80,13 @@ class cslLogo extends PageLinesSection {
         $siteName   = get_bloginfo( 'name' );
 
         
-        $logo = sprintf('<div class="ccw-logo-wrapper fix"><a href="%s" title="%s"><img class="ccw-logo %s" src="%s" alt="%s"></a></div>', $siteUrl, $siteName, $logoClass, $logo, $alt ); 
-        
 
+        // Set up the output
+        $logo = sprintf('<div class="ccw-logo-wrapper fix"><a href="%s" title="%s"><img class="ccw-logo %s" src="%s" alt="%s"></a></div>', $siteUrl, $siteName, $logoClass, $logo, $alt ); 
         $class = $this->opt($this->id.'cslLogo_animation');
             
-                
+        
+        // Output this bad boy on the screen     
         printf('<div class="pl-animation %s" >%s</div>', $class, $logo);
 
     }

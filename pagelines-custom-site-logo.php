@@ -1,6 +1,6 @@
 <?php
 /*
-	Section: Custom Site Logo
+	Plugin Name: Custom Site Logo
     Author: Tuna Traffic
     Author URI: http://www.tunatraffic.com
     Plugin URI: https://github.com/tunatraffic/pagelines-custom-site-logo
