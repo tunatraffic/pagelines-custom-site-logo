@@ -13,11 +13,8 @@ class cslLogo extends PageLinesSection {
 
     // Welcome Message
     function welcome(){
-
         ob_start();
-
-        ?><p><?php _e('You can use PageLines DMS Grid to easy positon your logo.  Alternatively, you can also use WordPress alignment classes such as: aligncenter, alignleft, or alignright to positon your logo or add your own class to the logo to style it.','pagelines');?></p><?php
-
+        ?><p>You can use PageLines DMS Grid to easy positon your logo.  Alternatively, you can also use WordPress alignment classes such as: aligncenter, alignleft, or alignright to positon your logo or add your own class to the logo to style it.</p><?php
         return ob_get_clean();
     }
 
